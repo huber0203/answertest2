@@ -5,97 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAnswer - Age Verification</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100%;
-        }
-        .background {
-            background-image: url('https://i.imgur.com/E8M3x0r.jpeg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .age-verification {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-        }
-        .logo {
-            max-width: 100px;
-            margin-bottom: 15px;
-        }
-        .age-verification h2 {
-            font-size: 24px;
-            letter-spacing: 0.5px;
-            margin: 10px 0;
-        }
-        .age-verification p {
-            font-size: 14px;
-            letter-spacing: 0.2px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .input-group {
-            display: flex;
-            margin-top: 15px;
-        }
-        .age-input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-right: none;
-            border-radius: 5px 0 0 5px;
-        }
-        .submit-button {
-            background-color: #ff4444;
-            color: #fff;
-            border: none;
-            padding: 10px 45px;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-        .submit-button .icon {
-            width: 20px;
-            height: 20px;
-        }
-        .submit-button:active,
-        .submit-button.brighten {
-            background-color: #ff8686;
-        }
-        @keyframes flashRed {
-            0%, 100% { border-color: #ddd; }
-            50% { border-color: #ff0000; }
-        }
-        .flash-red {
-            animation: flashRed 0.3s 2;
-        }
+        /* 你的CSS代码 */
     </style>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=799774410198381&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
+    <!-- 你的body内容 -->
     <div class="background">
         <div class="overlay">
             <div class="age-verification">
@@ -116,13 +47,9 @@
         function submitAge() {
             const ageInput = document.querySelector('.age-input');
             const age = ageInput.value;
-            const button = document.querySelector('.submit-button');
             if (age) {
-                button.classList.add('brighten');
-                setTimeout(() => {
-                    button.classList.remove('brighten');
-                    window.location.href = 'https://www.xanswer.com/';
-                }, 300);
+                fbq('track', 'Search');  // Track the search event
+                window.location.href = 'https://www.xanswer.com/';
             } else {
                 ageInput.classList.add('flash-red');
                 setTimeout(() => {
