@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>XAnswer - Age Verification</title>
     <link rel="icon" type="image/png" href="https://i.imgur.com/plsMcP8.png">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             height: 100%;
+            -webkit-text-size-adjust: 100%;
         }
         .background {
             background-image: url('https://i.imgur.com/egS9rGX.jpeg');
@@ -38,50 +39,63 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            width: 300px;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .logo {
-            max-width: 100px;
+            max-width: 120px;
             margin-bottom: 15px;
         }
         .age-verification h2 {
-            font-size: 24px;
-            letter-spacing: 0.5px;
-            margin: 10px 0;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            margin: 15px 0;
+            color: #333;
         }
         .age-verification p {
-            font-size: 14px;
+            font-size: 16px;
             letter-spacing: 0.2px;
             color: #666;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .input-group {
             display: flex;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .age-input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            font-size: 24px;
+            border: 2px solid #ddd;
             border-right: none;
-            border-radius: 5px 0 0 5px;
+            border-radius: 8px 0 0 8px;
+            width: 60%;
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
+        .age-input::-webkit-inner-spin-button, 
+        .age-input::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
         }
         .submit-button {
             background-color: #ff4444;
             color: #fff;
             border: none;
-            padding: 10px 45px;
-            border-radius: 0 5px 5px 0;
+            padding: 15px 10px;
+            border-radius: 0 8px 8px 0;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s ease;
+            width: 40%;
+            -webkit-tap-highlight-color: transparent;
         }
         .submit-button .icon {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
         .submit-button:active,
         .submit-button.brighten {
@@ -94,20 +108,39 @@
         .flash-red {
             animation: flashRed 0.3s 2;
         }
+        @media (max-width: 480px) {
+            .age-verification h2 {
+                font-size: 24px;
+            }
+            .age-verification p {
+                font-size: 14px;
+            }
+            .age-input {
+                font-size: 20px;
+                padding: 12px;
+            }
+            .submit-button {
+                padding: 12px 10px;
+            }
+            .submit-button .icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
     </style>
-  
+    
     <!-- Meta Pixel Code -->
-<script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '292247500599398');
-    fbq('track', 'PageView');
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '292247500599398');
+        fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=292247500599398&ev=PageView&noscript=1"
@@ -120,10 +153,10 @@
         <div class="overlay">
             <div class="age-verification">
                 <img src="https://i.imgur.com/GLtsJRk.png" alt="XAnswer Logo" class="logo">
-                <h2>How old are you?</h2>
-                <p>Unlock Personalized Search Results</p>
+                <h2 id="title">How old are you?</h2>
+                <p id="subtitle">Unlock Personalized Search Results</p>
                 <div class="input-group">
-                    <input type="number" class="age-input" placeholder="0" min="0" max="120">
+                    <input type="number" class="age-input" placeholder="0" min="0" max="120" inputmode="numeric" pattern="[0-9]*">
                     <button class="submit-button" onclick="submitAge()">
                         <img src="https://i.imgur.com/h41LwCJ.png" alt="Magic Wand" class="icon">
                     </button>
@@ -133,10 +166,47 @@
     </div>
 
     <script>
+        // 多語言支持
+        const translations = {
+            'en': {
+                title: 'How old are you?',
+                subtitle: 'Unlock Personalized Search Results'
+            },
+            'zh': {
+                title: '你幾歲？',
+                subtitle: '解鎖個人化搜索結果'
+            },
+            'ja': {
+                title: 'あなたは何歳ですか？',
+                subtitle: 'パーソナライズされた検索結果のロックを解除'
+            },
+            // 可以繼續添加其他語言...
+        };
+
+        // 獲取用戶語言
+        function getUserLanguage() {
+            return navigator.language || navigator.userLanguage;
+        }
+
+        // 設置頁面語言
+        function setPageLanguage() {
+            const userLang = getUserLanguage().split('-')[0]; // 只取主要語言代碼
+            const lang = translations[userLang] ? userLang : 'en'; // 如果沒有對應翻譯，使用英文
+
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('subtitle').textContent = translations[lang].subtitle;
+            
+            // 更新 HTML lang 屬性
+            document.documentElement.lang = lang;
+        }
+
+        // 頁面加載時設置語言
+        window.onload = setPageLanguage;
+
         function submitAge() {
             const ageInput = document.querySelector('.age-input');
             const age = ageInput.value;
-            if (age) {
+            if (age && age >= 0 && age <= 120) {
                 fbq('track', 'Search');  // Track the search event
                 window.location.href = 'https://www.xanswer.com/';
             } else {
@@ -156,6 +226,11 @@
                     button.classList.remove('brighten');
                 }, 300);
             }
+        });
+
+        // 防止 iOS 縮放
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
         });
     </script>
 </body>
