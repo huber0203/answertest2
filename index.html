@@ -4,10 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAnswer - Age Verification</title>
-        <link rel="icon" type="image/png" href="https://i.imgur.com/plsMcP8.png">
-
+    <link rel="icon" type="image/png" href="https://i.imgur.com/plsMcP8.png">
     <style>
-        /* 你的CSS代码 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .background {
+            background-image: url('https://i.imgur.com/egS9rGX.jpeg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .age-verification {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 15px;
+        }
+        .age-verification h2 {
+            font-size: 24px;
+            letter-spacing: 0.5px;
+            margin: 10px 0;
+        }
+        .age-verification p {
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            display: flex;
+            margin-top: 15px;
+        }
+        .age-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+        }
+        .submit-button {
+            background-color: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 10px 45px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        .submit-button .icon {
+            width: 20px;
+            height: 20px;
+        }
+        .submit-button:active,
+        .submit-button.brighten {
+            background-color: #ff6666;
+        }
+        @keyframes flashRed {
+            0%, 100% { border-color: #ddd; }
+            50% { border-color: #ff0000; }
+        }
+        .flash-red {
+            animation: flashRed 0.3s 2;
+        }
     </style>
     <!-- Facebook Pixel Code -->
     <script>
@@ -28,7 +114,6 @@
     <!-- End Facebook Pixel Code -->
 </head>
 <body>
-    <!-- 你的body内容 -->
     <div class="background">
         <div class="overlay">
             <div class="age-verification">
