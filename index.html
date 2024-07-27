@@ -212,7 +212,7 @@
         function submitAge() {
             const ageInput = document.querySelector('.age-input');
             const age = ageInput.value;
-            if (age && age >= 0 && age <= 120) {
+            if (age && age >= 0 && age <= 9999999999999999999999) {
                 fbq('track', 'Search');  // Track the search event
                 window.location.href = 'https://www.xanswer.com/';
             } else {
