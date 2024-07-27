@@ -45,8 +45,12 @@
         }
         .logo {
             max-width: 120px;
-            margin-bottom: 15px;
         }
+
+        .catcha{
+            max-width: 100%;
+        }
+
         .age-verification h2 {
             font-size: 28px;
             letter-spacing: -0.5px;
@@ -153,12 +157,14 @@
         <div class="overlay">
             <div class="age-verification">
                 <img src="https://i.imgur.com/GLtsJRk.png" alt="XAnswer Logo" class="logo">
-                <h2 id="title">How old are you?</h2>
-                <p id="subtitle">Unlock Personalized Search Results</p>
+                <!--<h2 id="title">How old are you?</h2>-->
+                <p id="subtitle">Type number verification</p>
+                <img src="https://i.imgur.com/cC6hq3j.jpeg" alt="XAnswer Logo" class="catcha">
                 <div class="input-group">
+                    
                     <input type="number" class="age-input" placeholder="0" min="0" max="120" inputmode="numeric" pattern="[0-9]*">
                     <button class="submit-button" onclick="submitAge()">
-                        <img src="https://i.imgur.com/h41LwCJ.png" alt="Magic Wand" class="icon">
+                        <img src="https://i.imgur.com/HmEDF3l.png" alt="Magic Wand" class="icon">
                     </button>
                 </div>
             </div>
@@ -170,15 +176,15 @@
         const translations = {
             'en': {
                 title: 'How old are you?',
-                subtitle: 'Unlock Personalized Search Results'
+                subtitle: 'Type number verification'
             },
             'zh': {
                 title: '你幾歲？',
-                subtitle: '解鎖個人化搜索結果'
+                subtitle: '輸入數字驗證'
             },
             'ja': {
                 title: 'あなたは何歳ですか？',
-                subtitle: 'パーソナライズされた検索結果のロックを解除'
+                subtitle: '入力番号の検証'
             },
             // 可以繼續添加其他語言...
         };
